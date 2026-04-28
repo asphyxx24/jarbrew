@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"systemMessage\": \"Vergiss nicht: /checkpoint ausführen um die Session zu dokumentieren, dann commit + push.\"}'",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
