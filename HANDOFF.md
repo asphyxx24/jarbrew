@@ -1,6 +1,12 @@
 # HANDOFF — Weitermachen am Heim-PC
 
-> **Zweck:** Dich zuhause ohne Vorwissen auf den aktuellen Projektstand bringen, damit du mit Claude Code direkt weiterarbeiten kannst. Nach Phase 1 darf dieses Dokument archiviert oder gelöscht werden.
+> **STATUS: ARCHIVIERT (2026-04-28).**
+> Diese Datei war die einmalige Übergabe-Doku für den Repo-Sprung von Conductor-Worktree auf den Heim-PC. Das Repo ist inzwischen am Heim-PC angekommen, der PRP wurde erweitert (Reframing auf Universal-Harness, STT/TTS festgelegt). Aktuelle Quellen: `JARVIS_PRP.md` (Hauptdokument), `CLAUDE.md` (Verhaltensregeln), `OPEN_QUESTIONS.md` (offene Punkte), `STT_TTS_OPTIONS.md` (Speech-Stack).
+> Diese Datei bleibt zur Nachvollziehbarkeit der ursprünglichen Übergabe erhalten — der Inhalt unten ist nicht mehr autoritativ.
+>
+> ---
+>
+> **Zweck (historisch):** Dich zuhause ohne Vorwissen auf den aktuellen Projektstand bringen, damit du mit Claude Code direkt weiterarbeiten kannst. Nach Phase 1 darf dieses Dokument archiviert oder gelöscht werden.
 >
 > **Erstellt am:** 2026-04-22 · **Branch:** `jarvis-prp`
 
