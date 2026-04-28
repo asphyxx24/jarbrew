@@ -1,5 +1,7 @@
 # CHANGELOG
 
+**Aktuelle Phase:** Phase 0 — Vorbereitung (in Arbeit)
+
 Wann wurde was fertig? Kurze Einträge, neueste zuerst.
 
 ---

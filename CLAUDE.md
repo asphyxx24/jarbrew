@@ -4,6 +4,18 @@
 
 ---
 
+## Session-Start — immer zuerst ausführen
+
+Beim Start jeder neuen Session, bevor du auf den User wartest:
+
+1. Lies `CHANGELOG.md` — zeigt aktuellen Projektstand und aktive Phase
+2. Lies `phases/phase-N/checklist.md` der aktiven Phase — zeigt offene Aufgaben
+3. Dann kurz melden: "Ich bin auf Stand. Aktuelle Phase: X. Nächste offene Aufgabe: Y. Womit fangen wir an?"
+
+Verfügbare Commands: `/prime` (vollständiger Einstieg), `/status` (Schnellüberblick), `/checkpoint` (Session dokumentieren), `/adr` (Entscheidung festhalten), `/phase-done` (Phase abschließen), `/decision` (schnelle Entscheidung).
+
+---
+
 ## Projektkontext
 
 Jarvis ist ein persönlicher Universal-Assistent (Coding, Bachelorarbeit, Mail, Kalender, Smart Home, Research). Hauptschnittstelle: Voice per `/voice` (PTT, Claude Code CLI only) oder voice-mode MCP, zusätzlich SSH/Text remote und PWA (Phase 6+). Eingaben sind fehleranfällig — Transkription kann falsch sein, Sprache kann mehrdeutig sein. Diese Regeln schützen vor ungewollten Aktionen.
