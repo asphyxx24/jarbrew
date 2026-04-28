@@ -189,8 +189,15 @@ switch ($Mode) {
 
 ### Bestehend
 
-- **Windows-PC** — Hauptarbeitsrechner, 24/7 geplant.
+- **Windows-PC (Hauptnutzer)** — 24/7 geplant.
+  - CPU: Ryzen 7 5800X (8C/16T, Zen 3)
+  - RAM: 32 GB
+  - GPU: AMD Radeon RX 6700XT (12 GB VRAM) — **kein CUDA**, Vulkan-Backend nutzbar
+  - OS: Windows 11
+  - Storage: NVMe SSD
+  - Implikation: Lokale ML-Workloads müssen CPU- oder Vulkan-/DirectML-Pfade nutzen. CUDA-spezifische Optimierungen entfallen.
 - **Android-Handy** — bereits vorhanden.
+- **Sekundär-Nutzer (geplant)** — MacBook (Chef). Adapter-Architektur muss plattformübergreifend funktionieren; Apple-Silicon-Backends (Metal in whisper.cpp) sind dort sogar performant.
 
 ### Zu beschaffen / entscheiden
 
@@ -436,7 +443,12 @@ Siehe [`CLAUDE.md`](./CLAUDE.md) im Repo-Root. Kernregeln:
 | 5 | Bachelorarbeit-Tool | LaTeX (Overleaf) | ✓ | User bestätigt. Empfehlung: Overleaf-Git-Sync + Filesystem MCP |
 | 6 | Verifier-Ebene 2 bauen | Erst nach 1–2 Wochen Praxis | — | Datenbasis vor Implementation |
 | 7 | Portable Display | Später — gebrauchtes iPad | — | Nach Phase 4 re-evaluieren |
-| 8 | voice-mode API-Stack | Lokal (Whisper + Kokoro) | ✓ | User bestätigt. OpenAI nur Fallback |
+| 8 | STT-Anbieter (Primary) | Groq Whisper Large v3 Turbo | ✓ | ~$1.80/Monat bei 45 h. `language="auto"` Pflicht. Eskalation auf large-v3 möglich. Details: `STT_TTS_OPTIONS.md` |
+| 8a | TTS-Anbieter (Primary) | Microsoft Edge-TTS | ✓ | gratis, deutsche Neural-Stimmen. Stimme noch zu wählen (Killian/Katja/Conrad) |
+| 8b | STT-Lokal-Fallback | faster-whisper `medium` (CPU) oder whisper.cpp + Vulkan | ✓ | CPU-Variante einfach, Vulkan performant aber Setup-Aufwand. AMD-GPU = kein CUDA |
+| 8c | TTS-Lokal-Fallback | Piper | ✓ | CPU, ~5–10× Realtime, läuft Win + Mac |
+| 8d | STT/TTS-Architektur | Adapter-Pattern, Backends austauschbar | ✓ | Wiederverwendbarkeit (Mac-Nutzer); Cloud-Backup-Slots: Deepgram, Azure Neural, Google Neural2 |
+| 8e | Verworfene STT/TTS-Anbieter | OpenAI (STT+TTS), AWS Polly, AWS Transcribe, ElevenLabs, EC2-Self-Hosting | ✓ | Begründung dokumentiert in `STT_TTS_OPTIONS.md` |
 | 9 | Wake-Word-Engine | openWakeWord | — | Picovoice Porcupine als Backup bei False-Positives |
 | 10 | Agent-Desktop-Backend | Docker-Container | — | Keine WSL2-Abhängigkeit für Claude Code, Docker-Desktop ok |
 
@@ -488,6 +500,6 @@ Siehe [`CLAUDE.md`](./CLAUDE.md) im Repo-Root. Kernregeln:
 4. **Halte die PRP aktuell.** Wenn du einen Schritt abschließt, hake die Checkbox ab und committe (nur wenn der User das wünscht).
 5. **Niemals ohne Rückfrage installieren, pushen, löschen.** CLAUDE.md-Regel Ebene 1 gilt.
 
-**Was bereits fest steht:** OS = Windows nativ. Bachelorarbeit = LaTeX/Overleaf. Sprachstack = lokal (Whisper + Kokoro). PTT ist Default, Wake-Word opt-in.
+**Was bereits fest steht:** OS = Windows nativ. Bachelorarbeit = LaTeX/Overleaf. STT = Groq Whisper Large v3 Turbo (Cloud). TTS = Microsoft Edge-TTS (Cloud, gratis). Lokale Fallbacks via Adapter-Architektur (faster-whisper / whisper.cpp + Piper). PTT ist Default, Wake-Word opt-in. Details und verworfene Optionen in `STT_TTS_OPTIONS.md`.
 
 **Was als nächstes ansteht:** Phase 1 (Grundsetup) — siehe Section 8.
