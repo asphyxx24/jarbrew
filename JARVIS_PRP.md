@@ -30,20 +30,27 @@
 
 ### Zielbild
 
-Ein persönlicher AI-Assistent, der:
+Ein **persönlicher Universal-Assistent** — ein Jarvis im Wortsinn, kein Coding-Bot mit Voice-Aufsatz. Eine Identität, eine fortlaufende Session, voller Anwendungs-Mix. Konkret:
 
-- per **Sprache angesprochen** werden kann, während ich durch die Wohnung laufe (Haupt-Use-Case)
-- Zugriff auf meine **Infrastruktur** hat: PC, GitHub, Dateisystem, MCP-Server
-- eigenständig **coden** kann (Bachelorarbeit, Job, Projekte)
-- **remote** erreichbar ist (unterwegs, Bahn); dort reicht Text-/Diktat-Eingabe
-- **sichtbar** arbeitet: persistente Sessions, von überall attachbar, optional ein eigener streambarer Desktop
-- mitwächst: Module wie Smart-Home, E-Mail-Triage, RAG kommen nach Bedarf dazu
+- per **Sprache angesprochen** werden, während ich durch die Wohnung laufe (Haupt-Use-Case)
+- über **eine Konversation** Aufgaben verschiedener Tiefe übernehmen — von Mikro ("Licht aus", "Timer 10 Min", "wie spät") über Mittel (E-Mails triagieren, Browser-Recherche, Termine) bis Deep Work (Bachelorarbeit, Coding, mehrstufige Recherchen)
+- Zugriff auf meine **Infrastruktur** haben: PC, Dateisystem, GitHub, Browser, Smart Home, eigene Accounts (E-Mail, Kalender)
+- **remote** erreichbar sein (unterwegs, Bahn); dort reicht Text-/Diktat-Eingabe
+- **sichtbar** arbeiten: persistente Sessions, von überall attachbar, optional ein eigener streambarer Desktop für Computer-Use-Tasks
+- **mitwachsen**: neue Fähigkeiten kommen als MCP oder parallele Container hinzu, ohne Architektur-Bruch
+
+### Kern-Klarstellung — wer ist "Jarvis"?
+
+Ich rede mit **Claude (dem Modell)**. **Claude Code ist der Harness** — eine persistente Agent-Laufzeit mit MCP-Plugin-System, Permission-Flow, Compaction und Hooks. Das ist kein Coding-Tool, sondern ein Universal-Agent, in dem Coding *einer* der Anwendungsfälle ist. Smart Home, Browser, Recherche, E-Mail laufen über MCPs in derselben Session und teilen sich Kontext. Computer Use (Phase 6) ist ein paralleler Container, den dieselbe Session orchestriert.
+
+Konsequenz: Mikro-Tasks ("Licht aus") laufen bewusst durch dasselbe Modell wie Deep-Work-Tasks. Latenz ~1–2 s und Token-Kosten ~0,5 Cent pro Mikro-Aktion sind der akzeptierte Preis für **eine Identität, einen Kontextfaden**. Ein vorgelagerter Mikro-Router (Hybrid-Architektur) ist eine spätere Optimierung — siehe Section 7 / Phase 6+ —, kein Phase-1-Thema.
 
 ### Nicht-Ziele
 
 - Kein Voice-Setup von unterwegs (Text reicht)
 - Kein Always-On-Listening als Default — Privacy-first, Wake-Word nur auf Wunsch
 - Kein Hardware-Blindkauf vor Praxistest
+- Kein zweites Orchestrator-LLM vor Phase 5 — eine Identität zuerst, Routing erst, wenn Praxisdaten zeigen, dass es nötig ist
 
 ---
 
