@@ -1,12 +1,14 @@
 # CLAUDE.md — Projekt-Leitplanken für Jarvis
 
-> Dieses File wird von Claude Code bei jedem Session-Start automatisch gelesen. Es enthält die verbindlichen Regeln für dieses Projekt. Siehe [`JARVIS_PRP.md`](./JARVIS_PRP.md) für das große Bild.
+> Dieses File wird von Claude Code bei jedem Session-Start automatisch gelesen. Es enthält die verbindlichen Regeln für dieses Projekt. Siehe [`docs/JARVIS_PRP.md`](./docs/JARVIS_PRP.md) für das große Bild und [`docs/adr/`](./docs/adr/) für Entscheidungshistorie.
 
 ---
 
 ## Projektkontext
 
-Jarvis ist ein persönlicher, sprachgesteuerter AI-Assistent. Die Hauptschnittstelle ist Voice (per `/voice` oder voice-mode MCP), zusätzlich SSH/Text von remote. Eingaben sind fehleranfällig — Transkription kann falsch sein, Sprache kann mehrdeutig sein. Diese Regeln schützen vor ungewollten Aktionen.
+Jarvis ist ein persönlicher Universal-Assistent (Coding, Bachelorarbeit, Mail, Kalender, Smart Home, Research). Hauptschnittstelle: Voice per `/voice` (PTT, Claude Code CLI only) oder voice-mode MCP, zusätzlich SSH/Text remote und PWA (Phase 6+). Eingaben sind fehleranfällig — Transkription kann falsch sein, Sprache kann mehrdeutig sein. Diese Regeln schützen vor ungewollten Aktionen.
+
+Destruktive Aktionen (Mail senden, git push, Kalender anlegen, Paket installieren) landen in der **Action-Queue** und brauchen explizites Approve — siehe `docs/JARVIS_PRP.md` Section 8 Ebene 2 für die Policy-Matrix.
 
 ---
 

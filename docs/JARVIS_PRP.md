@@ -447,7 +447,7 @@ Default-Bias bei Unsicherheit: Approval anfordern. Matrix wird in Phase 3 implem
 
 - [ ] Bluetooth-Headset mit PC koppeln, als Standard-Input setzen, HFP-Codec auf mSBC (oder höher) zwingen.
 - [ ] In Claude Code `/voice` testen (Leertaste halten, sprechen).
-- [ ] Falls `/voice`-Qualität OK: fertig. Falls nicht: Groq-Whisper-Pipeline aus `STT_TTS_OPTIONS.md` als eigenen Client bauen.
+- [ ] Falls `/voice`-Qualität OK: fertig. Falls nicht: Groq-Whisper-Pipeline aus `docs/STT_TTS_OPTIONS.md` als eigenen Client bauen.
 - [ ] Edge-TTS-Stimme wählen (Killian / Katja / Conrad probehören), Test-Output am PC.
 - [ ] Unified Remote PC-Server + Pixel-Client installieren, Custom-Remote "PTT Space Hold" bauen.
 - [ ] Realtest: durch Wohnung laufen, Mic-Reichweite prüfen.
@@ -599,12 +599,12 @@ Default-Bias bei Unsicherheit: Approval anfordern. Matrix wird in Phase 3 implem
 | 5 | Bachelorarbeit-Tool | LaTeX (Overleaf) + Git-Sync | ✓ | Filesystem-MCP aufs lokale Overleaf-Clone. Pfad bei Implementierung Phase 1 entschieden |
 | 6 | Verifier-Ebene 3 bauen | Erst nach 1–2 Wochen Praxis | — | Datenbasis vor Implementation |
 | 7 | Portable Display | Später — gebrauchtes iPad | — | Nach Phase 4 re-evaluieren |
-| 8 | STT-Anbieter (Primary) | Groq Whisper Large v3 Turbo | ✓ | ~$1.80/Monat bei 45 h. `language="auto"` Pflicht — gilt für Groq-Pipeline (Phase 7+), **nicht** für `/voice` (hat kein `auto`, nur feste Sprachen). Details: `STT_TTS_OPTIONS.md` |
+| 8 | STT-Anbieter (Primary) | Groq Whisper Large v3 Turbo | ✓ | ~$1.80/Monat bei 45 h. `language="auto"` Pflicht — gilt für Groq-Pipeline (Phase 7+), **nicht** für `/voice` (hat kein `auto`, nur feste Sprachen). Details: `docs/STT_TTS_OPTIONS.md` |
 | 8a | TTS-Anbieter (Primary) | Microsoft Edge-TTS | ✓ | gratis, deutsche Neural-Stimmen. Stimme zu wählen (Killian/Katja/Conrad) in Phase 2 |
 | 8b | STT-Lokal-Fallback | faster-whisper `medium` (CPU) oder whisper.cpp + Vulkan | ✓ | CPU-Variante einfach, Vulkan performant aber Setup-Aufwand. AMD-GPU = kein CUDA |
 | 8c | TTS-Lokal-Fallback | Piper | ✓ | CPU, ~5–10× Realtime, läuft Win + Mac |
 | 8d | STT/TTS-Architektur | Adapter-Pattern, Backends austauschbar | ✓ | Mac-Nutzer-Kompatibilität; Cloud-Backup-Slots: Deepgram, Azure Neural, Google Neural2 |
-| 8e | Verworfene STT/TTS-Anbieter | OpenAI (STT+TTS), AWS Polly/Transcribe, ElevenLabs, EC2-Self-Hosting | ✓ | Begründung dokumentiert in `STT_TTS_OPTIONS.md` |
+| 8e | Verworfene STT/TTS-Anbieter | OpenAI (STT+TTS), AWS Polly/Transcribe, ElevenLabs, EC2-Self-Hosting | ✓ | Begründung dokumentiert in `docs/STT_TTS_OPTIONS.md` |
 | 9 | Wake-Word-Engine | openWakeWord | — | Picovoice Porcupine als Backup bei False-Positives |
 | 10 | Agent-Desktop-Backend | Docker-Container | — | Keine WSL2-Abhängigkeit für Claude Code, Docker-Desktop ok |
 | 11 | Architektur-Kern | Claude Code als Universal-Harness, kein Custom-Orchestrator | ✓ | Eine Identität, ein Kontextfaden über Mikro-/Mid-/Deep-Tasks. Mikro-Tasks bewusst durchs Hauptmodell (~1–2 s, ~0,5 ct). Hybrid-Router (Haiku-Dispatcher) ist Phase-10+-Re-Eval. Begründung: Section 1 "Kern-Klarstellung" |
@@ -701,4 +701,4 @@ Default-Bias bei Unsicherheit: Approval anfordern. Matrix wird in Phase 3 implem
 - Action-Queue + Approval-Policy = Phase 3.
 - Vault = Markdown + GitHub-Auto-Sync, ab Phase 5.
 
-**Was als Nächstes ansteht:** Phase 1 (Grundsetup) — siehe Section 9, sobald die offenen Punkte aus `OPEN_QUESTIONS.md` abgearbeitet sind.
+**Was als Nächstes ansteht:** Phase 1 (Grundsetup) — siehe Section 9, sobald die offenen Punkte abgearbeitet — siehe `CHANGELOG.md` und `docs/adr/`.
