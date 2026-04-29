@@ -584,6 +584,17 @@ Default-Bias bei Unsicherheit: Approval anfordern. Matrix wird in Phase 3 implem
 - **Skizze:** Raspberry Pi 5 oder NUC, 24/7, Hauptrechner bleibt reine Workstation.
 - **Entry:** Hauptrechner zu beschäftigt / zu viel Ressourcenverbrauch durch Jarvis.
 
+### Phase 16 — WoL-Trigger aus PWA / eigener App
+
+- **Bedarf:** Auf der Pixel-Heimseite einen „PC wecken"-Button in der eigenen PWA, statt eine separate WoL-App zu öffnen.
+- **Constraint:** Browser/PWA können kein UDP-Magic-Packet senden (Web-API hat nur HTTP/WebSocket/WebRTC). Sender muss ein Always-On-Helper im LAN sein — der zu weckende PC ist ja gerade aus.
+- **Skizzen:**
+  - **(a) Tailscale-Helper:** Always-On-Knoten (Phase-15-Mini-PC, Pi, Router mit Tailscale) hostet einen winzigen `POST /wake`-Endpoint. PWA → Tailscale → Helper → Magic Packet. Sauberster Weg, sobald ein zweiter Knoten existiert.
+  - **(b) Router-API:** FritzBox/OpenWrt können WoL und haben HTTP-Endpunkte. PWA → Router-API. Günstigster Weg, wenn der Router das eh kann.
+  - **(c) Cloud-Relay:** PWA → Cloud-Service → MQTT/Push → Helper. Komplex, nur wenn Tailscale ausfällt.
+- **Entry:** Sobald Phase 15 (Mini-PC) oder ein anderer Always-On-Tailscale-Knoten verfügbar ist; alternativ jederzeit über die Router-API. Bis dahin: fertige WoL-App auf dem Pixel.
+- **Action-Queue-Eignung:** Passt natürlich rein — WoL-Trigger als Action mit Auto-Approve (lesend ist es nicht, aber harmlos und bewusst gewollt).
+
 ---
 
 ## 12. Entscheidungstabelle
